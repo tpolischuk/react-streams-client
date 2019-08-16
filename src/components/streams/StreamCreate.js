@@ -3,11 +3,22 @@ import { Field, reduxForm } from 'redux-form';
 
 class StreamCreate extends React.Component {
 
+    //Object destructuring
+    renderInput({ input, label }) {
+        // spread operator for onChange and value
+        return (
+        <div className="field">
+            <label>{label}</label>
+            <input {...input}/>
+        </div>
+        );
+    }
+
     render() {
         return(
-          <form>
-              <Field name="title" />
-              <Field name="description" />
+          <form className="ui form">
+              <Field name="title" component={this.renderInput} label="Enter Title" />
+              <Field name="description" component={this.renderInput} label="Enter Description" />
           </form>  
         );
     }
