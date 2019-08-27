@@ -17,7 +17,6 @@ class StreamCreate extends React.Component {
 
     //Object destructuring
     renderInput = ({ input, label, meta }) => {
-        console.log(meta);
         // spread operator for onChange and value
 
         const className = `field ${meta.error && meta.touched ? 'error': ''}`;
