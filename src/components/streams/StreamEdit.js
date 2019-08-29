@@ -10,7 +10,8 @@ class StreamEdit extends React.Component {
     }
 
     onSubmit = (formValues) => {
-        console.log(formValues);
+        // Woo let's do this
+        this.props.editStream(this.props.match.params.id, formValues);
     };
 
     render() {
