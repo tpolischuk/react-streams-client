@@ -3,9 +3,9 @@ import { Field, reduxForm } from 'redux-form';
 
 class StreamForm extends React.Component {
 
-    renderError({ error, touched}) {
+    renderError({ error, touched }) {
         if (touched && error) {
-            return(
+            return (
                 <div className="ui error message">
                     <div className="header">{error}</div>
                 </div>
@@ -17,13 +17,13 @@ class StreamForm extends React.Component {
     renderInput = ({ input, label, meta }) => {
         // spread operator for onChange and value
 
-        const className = `field ${meta.error && meta.touched ? 'error': ''}`;
+        const className = `field ${meta.error && meta.touched ? 'error' : ''}`;
         return (
-        <div className={className}>
-            <label>{label}</label>
-            <input {...input} autoComplete="off"/>
-            {this.renderError(meta)}
-        </div>
+            <div className={className}>
+                <label>{label}</label>
+                <input {...input} autoComplete="off" />
+                {this.renderError(meta)}
+            </div>
         );
     }
 
@@ -32,12 +32,12 @@ class StreamForm extends React.Component {
     }
 
     render() {
-        return(
-          <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="ui form error">
-              <Field name="title" component={this.renderInput} label="Enter Title" />
-              <Field name="description" component={this.renderInput} label="Enter Description" />
-              <button className="ui button primary">Submit</button>
-          </form>  
+        return (
+            <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="ui form error">
+                <Field name="title" component={this.renderInput} label="Enter Title" />
+                <Field name="description" component={this.renderInput} label="Enter Description" />
+                <button className="ui button primary">Submit</button>
+            </form>
         );
     }
 
