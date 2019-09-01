@@ -10,21 +10,21 @@ class StreamList extends React.Component {
 
     renderAdmin(stream) {
         if (stream.userId === this.props.currentUserId) {
-            return(
+            return (
                 <div className="right floated content">
                     <Link className="ui button primary" to={`/streams/edit/${stream.id}`}>
                         Edit
                     </Link>
-                    <button className="ui button negative">
+                    <Link to={`/streams/delete/${stream.id}`} className="ui button negative">
                         Delete
-                    </button>
+                    </Link>
                 </div>
-                );
+            );
         }
     }
 
     renderList() {
-        return this.props.streams.map( stream => {
+        return this.props.streams.map(stream => {
             return (
                 <div className="item" key={stream.id}>
                     {this.renderAdmin(stream)}
@@ -40,8 +40,8 @@ class StreamList extends React.Component {
 
     renderCreate() {
         if (this.props.isSignedIn) {
-            return(
-                <div style={{  textAlign: 'right' }}>
+            return (
+                <div style={{ textAlign: 'right' }}>
                     <Link to="/streams/new" className="ui button primary">
                         Create Stream
                     </Link>
@@ -51,7 +51,7 @@ class StreamList extends React.Component {
     }
 
     render() {
-        return(
+        return (
             <div>
                 <h2>Streams</h2>
                 <div className="ui celled list">
@@ -59,16 +59,16 @@ class StreamList extends React.Component {
                 </div>
                 {this.renderCreate()}
             </div>
-            );
+        );
     }
 }
 
 const mapStateToProps = (state) => {
-    return { 
+    return {
         streams: Object.values(state.streams),
-        currentUserId: state.auth.userId, 
+        currentUserId: state.auth.userId,
         isSignedIn: state.auth.isSignedIn
-     };
+    };
 };
 
-export default connect(mapStateToProps, { fetchStreams } )(StreamList);
+export default connect(mapStateToProps, { fetchStreams })(StreamList);
